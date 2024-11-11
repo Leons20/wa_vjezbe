@@ -1,0 +1,6 @@
+[submodule "wa_01_vjezbe"]
+	path = wa_01_vjezbe
+	url = https://github.com/Leons20/wa_01_vjezbe.git
+[submodule "wa_02_vjezbe"]
+	path = wa_02_vjezbe
+	url = https://github.com/Leons20/wa_02_vjezbe.git
