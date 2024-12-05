@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "ime": "Ana",
+    "prezime": "Horvat",
+    "godine_staza": 5,
+    "pozicija": "programer"
+  },
+  {
+    "id": 2,
+    "ime": "Marko",
+    "prezime": "Ivić",
+    "godine_staza": 10,
+    "pozicija": "voditelj"
+  },
+  {
+    "id": 3,
+    "ime": "Ivana",
+    "prezime": "Kovač",
+    "godine_staza": 3,
+    "pozicija": "dizajner"
+  }
+]

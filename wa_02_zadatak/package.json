@@ -1,0 +1,16 @@
+{
+  "name": "wa_02_zadatak",
+  "version": "1.0.0",
+  "description": "Samostalni zadatak za vježbu 2",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Leon Stanić",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
