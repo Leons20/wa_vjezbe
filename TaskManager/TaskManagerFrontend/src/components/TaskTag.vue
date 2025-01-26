@@ -1,21 +1,21 @@
-<template>
-    <span :class="tagMapping[tag]" class="text-xs px-2 py-1 rounded-md">{{ tag }}</span>
-</template>
-
 <script setup>
 defineProps({
     tag: Object,
-})
+});
 
 let tagMapping = {
-    "hitno": "bg-red-100",
-    "faks": "bg-blue-100",
-    "pomalo": "bg-green.100",
+    "hitno": "bg-red-500 text-white",
+    "faks": "bg-blue-500 text-white",
+    "pomalo": "bg-green-500 text-white"
 };
 </script>
 
+<template>
+    <span :class="tagMapping[tag]">{{ tag }}</span>
+</template>
+
 <style scoped>
-.tag{
+.tag {
     padding: 0.5rem;
     border-radius: 0.25rem;
     font-size: 0.875rem;

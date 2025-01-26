@@ -1,21 +1,19 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import axios from "axios";
+import Task from "./components/Task.vue";
 
-const naslovZadatka = ref("");
-const opisZadatka = ref("");
-const editing = ref(false);
+onMounted(async ()=> {
+  let response =  await axios.get("http:localhost:8000/tasks");
+  console.log(response);
+})
+
 const tasks = ref([]);
+const editing = ref(false);
 
-function dodajZadatak() {
-  if (naslovZadatka.value.trim() && opisZadatka.value.trim()) {
-    tasks.value.unshift({
-      naslov: naslovZadatka.value,
-      opis: opisZadatka.value,
-    });
-    naslovZadatka.value = "";
-    opisZadatka.value = "";
-    editing.value = false;
-  }
+function dodajZadatak(task) {
+  tasks.value.unshift(task);
+  editing.value = false;
 }
 </script>
 
@@ -31,46 +29,8 @@ function dodajZadatak() {
         Dodaj zadatak
       </button>
     </header>
-    <!--/Header-->
-
-    <!-- Editable Input Section -->
-    <div v-if="editing" class="bg-white p-4 shadow rounded-md mb-6">
-      <div class="mb-4">
-        <label class="block text-gray-700 font-medium mb-2" for="naslov"
-          >Naslov zadatka:</label
-        >
-        <input
-          id="naslov"
-          type="text"
-          v-model="naslovZadatka"
-          class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-          placeholder="Unesite naslov zadatka" />
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700 font-medium mb-2" for="opis"
-          >Opis zadatka:</label
-        >
-        <textarea
-          id="opis"
-          v-model="opisZadatka"
-          rows="3"
-          class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-          placeholder="Unesite opis zadatka"></textarea>
-      </div>
-      <div class="flex space-x-4">
-        <button
-          class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
-          @click="dodajZadatak">
-          Spremi zadatak
-        </button>
-        <button
-          class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600"
-          @click="editing = false">
-          Odustani
-        </button>
-      </div>
-    </div>
-    <!--/Editable Input Section-->
+    <!-- Task Input Component -->
+    <Task v-if="editing" @saveTask="dodajZadatak" @cancel="editing = false" />
 
     <!-- Task List -->
     <div class="bg-white p-4 shadow rounded-md">
